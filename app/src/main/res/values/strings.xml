@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">univisionTest</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Labels -->
+    <string name="search_articles">Search Articles</string>
+    <string name="create_article">Create Article</string>
+</resources>
