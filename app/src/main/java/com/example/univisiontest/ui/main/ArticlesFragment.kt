@@ -1,4 +1,4 @@
-package com.example.univisiontest.articlesmenu.articles
+package com.example.univisiontest.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
