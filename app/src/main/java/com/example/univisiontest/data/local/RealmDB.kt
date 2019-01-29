@@ -1,6 +1,6 @@
-package com.example.univisiontest.articlesmenu.data.local
+package com.example.univisiontest.data.local
 
-import com.example.univisiontest.articlesmenu.data.Article
+import com.example.univisiontest.model.Article
 import io.realm.Realm
 import io.realm.RealmResults
 
