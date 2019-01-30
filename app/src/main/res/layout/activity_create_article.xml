@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+                name="vm"
+                type="com.example.univisiontest.ui.createarticle.CreateArticleViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.createarticle.CreateArticleActivity"
+    >
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/city_id_til"
+                android:hint="@string/city_id"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent">
+            <EditText
+                    android:id="@+id/city_code_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:autofillHints=""
+                    android:imeOptions="actionNext"
+                    android:maxLength="3"
+                    android:afterTextChanged="@{(editable)->vm.afterCityIdChanged(editable)}"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/author_name_til"
+                android:hint="@string/author_name"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/city_id_til">
+            <EditText
+                    android:id="@+id/author_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:autofillHints=""
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:afterTextChanged="@{(editable)->vm.afterAuthorChanged(editable)}"
+
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/content_til"
+                android:hint="@string/article_content"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/author_name_til" android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toTopOf="@+id/save_article_btn">
+            <EditText
+                    android:id="@+id/content_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints=""
+                    android:imeOptions="actionNext"
+                    android:inputType="text|textMultiLine"
+                    android:afterTextChanged="@{(editable)->vm.afterContentChanged(editable)}"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+                android:text="@string/save_article"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:id="@+id/save_article_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                style="@style/button.green.rounded"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{()-> vm.onSaveClicked()}"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

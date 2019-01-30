@@ -7,8 +7,8 @@ import dagger.Provides
 import javax.inject.Singleton
 
 
-@Singleton
 @Module(includes = [PersistenceModule::class, UtilModule::class])
+
 class AppModule(app: Application) {
 
     private val app: Application = app

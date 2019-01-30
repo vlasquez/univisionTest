@@ -16,12 +16,25 @@ class RealmDB(realm: Realm) {
     }
 
     fun getArticleByCityId(cityId: String): RealmResults<Article> {
-        return realm.where(Article::class.java!!).equalTo("id", cityId).findAllAsync()
+        return realm.where(Article::class.java).equalTo("cityId", cityId).findAllAsync()
     }
 
     fun addArticle(article: Article) {
-        realm.executeTransactionAsync { realm ->
-            realm.copyToRealmOrUpdate(article)
+        realm.executeTransaction { realm ->
+
+            val currentIdNum = realm.where(article::class.java).max("id")
+            val nextId: Long
+            if (currentIdNum == null) {
+                nextId = 1
+            } else {
+                nextId = currentIdNum.toLong() + 1
+            }
+            val article = Article()
+            article.id = nextId
+            article.cityId = article.cityId
+            article.author = article.author
+            article.content = article.content
+            realm.insertOrUpdate(article)
         }
     }
 }

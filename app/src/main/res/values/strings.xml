@@ -5,4 +5,10 @@
     <!-- Labels -->
     <string name="search_articles">Search Articles</string>
     <string name="create_article">Create Article</string>
+    <string name="save_article">Save Article</string>
+
+    <!-- Hints -->
+    <string name="city_id">City Id</string>
+    <string name="author_name">Author Name</string>
+    <string name="article_content">Article Content</string>
 </resources>

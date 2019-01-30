@@ -7,7 +7,6 @@ import dagger.Module
 import dagger.Provides
 
 
-@PerActivity
 @Module
 class ActivityModule(activity: Activity) {
     private var activity: Activity = activity

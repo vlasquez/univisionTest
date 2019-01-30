@@ -12,6 +12,8 @@ open class Article : RealmObject() {
     var cityId: String? = null
     @JvmField
     var content: String? = null
+    @JvmField
+    var author: String? = null
 
 
     override fun equals(obj: Any?): Boolean {
@@ -25,5 +27,9 @@ open class Article : RealmObject() {
 
     override fun hashCode(): Int {
         return (id % Integer.MAX_VALUE).toInt()
+    }
+
+    fun allDataValid(): Boolean {
+        return !cityId.isNullOrEmpty() && !content.isNullOrEmpty() && !content.isNullOrEmpty()
     }
 }

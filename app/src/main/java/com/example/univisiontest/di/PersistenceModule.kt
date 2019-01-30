@@ -15,7 +15,7 @@ class PersistenceModule {
 
     @Provides
     @Singleton
-    private fun providesPrefs(@AppContext context: Context): Prefs {
+    fun providesPrefs(@AppContext context: Context): Prefs {
         return Prefs(context)
     }
 

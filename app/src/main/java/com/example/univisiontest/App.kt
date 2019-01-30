@@ -5,12 +5,14 @@ import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.example.univisiontest.di.AppComponent
 import com.example.univisiontest.util.Foreground
+import com.facebook.stetho.Stetho
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider
 import io.realm.Realm
 import java.io.IOException
 
 class App : MultiDexApplication() {
 
-    private var appComponent: AppComponent? = null
+    private lateinit var appComponent: AppComponent
 
 
     override fun onCreate() {
@@ -19,9 +21,14 @@ class App : MultiDexApplication() {
         Realm.init(this)
 
         appComponent = AppComponent.component(this)
-        appComponent!!.inject(this)
+        appComponent.inject(this)
 
         initForeground()
+        Stetho.initialize(
+            Stetho.newInitializerBuilder(this)
+                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+                .build())
     }
 
 
@@ -39,7 +46,7 @@ class App : MultiDexApplication() {
     }
 
     companion object {
-        fun component(context: Context): AppComponent? {
+        fun component(context: Context): AppComponent {
             return (context.applicationContext as App).appComponent
         }
     }
